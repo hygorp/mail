@@ -10,8 +10,6 @@
         <input type="submit" value="Send" name="sendMail">
     </form>
     <?php
-    phpinfo();
-    /*
         $from = "hygorhpimentel@live.com";
         ini_set('SMTP', "smtp-mail.outlook.com");
         ini_set('smtp_port', "587");
@@ -23,7 +21,7 @@
 
         if(isset($_POST['sendMail'])){
             mail($to, $subject, $message);
-        }*/
+        }
     ?>
 </body>
 </html>
