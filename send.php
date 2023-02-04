@@ -10,6 +10,7 @@
         <input type="submit" value="Send" name="sendMail">
     </form>
     <?php
+        //Params
         $from = "hygorhpimentel@live.com";
         ini_set('SMTP', "smtp-mail.outlook.com");
         ini_set('smtp_port', "587");
