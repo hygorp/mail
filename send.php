@@ -5,9 +5,7 @@
 </head>
 <body>
     <form method="post">
-        <input type="text" name="to" placeholder="To: ">
-        <input type="text" name="subject" placeholder="Subject: ">
-        <input type="text" name="message" placeholder="Message: ">
+        <input type="text" name="email" placeholder="Email">
         <input type="submit" value="Send" name="sendMail">
     </form>
     <?php
@@ -23,24 +21,26 @@
 
         //Create an instance; passing `true` enables exceptions
         if(isset($_POST['sendMail'])){
+            $code = rand(111111, 999999);
+            $sentCode = $code;
             $mail = new PHPMailer(true);
             $mail->CharSet = "UTF-8";
-            @$to = $_POST['to'];
-            @$subject = $_POST['subject'];
-            @$message = $_POST['message'];
+            @$to = $_POST['email'];
+            @$subject = "Código de Confirmação";
+            @$message = "Seu Código de Confirmação é: '".$sentCode."'";
             try {
                 //Server settings
                 $mail->SMTPDebug = false;                                       //Enable verbose debug output
                 $mail->isSMTP();                                               //Send using SMTP
                 $mail->Host       = 'smtp.office365.com';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                    //Enable SMTP authentication
-                $mail->Username   = 'EMAIL';                     //SMTP username
-                $mail->Password   = 'SENHA';                               //SMTP password
+                $mail->Username   = '';                     //SMTP username
+                $mail->Password   = '';                               //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;              //Enable implicit TLS encryption
                 $mail->Port       = 587;                                        //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                 //Recipients
-                $mail->setFrom('hygor.henrique@live.com', 'Hygor Henrique');
+                $mail->setFrom('', '');
                 $mail->addAddress($to);     //Add a recipient
 
                 //Content
